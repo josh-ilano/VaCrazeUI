@@ -86,21 +86,8 @@ enum class VacrazeScreen() {
 private var TOTAL_TIME = 24 * 3600
 private val HOUR_TIME = 60 * 60
 
-@Composable
-fun Label(text: String, icon: ImageVector) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Text(
-            text, modifier = Modifier.weight(1f),
-            textAlign = TextAlign.Center
-        )
-        FloatingActionButton(
-            modifier = Modifier.weight(1f),
-            onClick = { },
-        ) { Icon(icon, text) }
-    }
 
-}
-
+// The bottom layout for the 5 buttons
 @Composable
 fun ButtonLayout(navController: NavHostController) {
     BottomAppBar() {
@@ -200,6 +187,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         }
     }
 
+
+
     Row(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier
                 .weight(4f)
@@ -230,7 +219,7 @@ fun App(
         modifier = Modifier.fillMaxSize(),
         bottomBar = { ButtonLayout(navController) }
     ) { innerPadding ->
-        NavHost( // what allows us to navigate
+        NavHost( // what allows us to navigate (Define all the possible navigation routes)
             navController = navController,
             startDestination = VacrazeScreen.Home.name,
             modifier = Modifier.padding(innerPadding)
